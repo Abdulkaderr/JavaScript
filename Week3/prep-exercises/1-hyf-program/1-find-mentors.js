@@ -1,7 +1,7 @@
 import { modules, students, mentors, classes } from "./hyf.js";
 
 /**
- * Tjebbe would like help to get a list of possible mentors for a module.
+ * Tjebbe would like help to get a git.
  * Fill in this function that finds all the mentors that can teach the given module.
  *
  * It should return an array of names. So something like:
