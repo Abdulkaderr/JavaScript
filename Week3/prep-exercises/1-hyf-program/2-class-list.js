@@ -49,11 +49,10 @@ console.log(getPeopleOfClass("class34"));
  *  }
  */
 const getActiveClasses = () => {
-  // TODO complete this function
-  const classActive = classes
-  .filter(classN => classN.active)
-  .map(classN => classN.name);
-  return classActive;
+  const result = {};
+   classes
+  .filter(classN => classN.active === true)
+  .map(classN => result[classN.name] = getPeopleOfClass(classN.name));
+  return result;
 };
-// You can uncomment out this line to try your function
  console.log(getActiveClasses());
