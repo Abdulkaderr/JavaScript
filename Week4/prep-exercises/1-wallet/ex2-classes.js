@@ -7,12 +7,16 @@ class Wallet {
   constructor(name, cash) {
     this.#name = name;
     this.#cash = cash;
+    this.dailyAllowance = 40;
+    this.dayTotalWithdrawals = 0;
   }
 
   get name() {
     return this.#name;
   }
-
+get cash(){
+  return this.#cash;
+}
   deposit(amount) {
     this.#cash += amount;
   }
@@ -22,9 +26,27 @@ class Wallet {
       console.log(`Insufficient funds!`);
       return 0;
     }
+    if(dayTotalWithdrawals + amount > dailyAllowance){
+      console.log(`Insufficient remaining daily allowance!`);
+      return 0;
+    }
 
     this.#cash -= amount;
+    this.dayTotalWithdrawals+= amount;
     return amount;
+  }
+
+  resetDailyAllowance(){
+    this.dayTotalWithdrawals = 0;
+
+  }
+
+  setDailyAllowance(newAllowance){
+    newAllowance = this.dailyAllowance;
+    console.log(
+      `Daily allowance set to: ${eurosFormatter.format(this.newAllowance)}`
+    );
+
   }
 
   transferInto(wallet, amount) {
