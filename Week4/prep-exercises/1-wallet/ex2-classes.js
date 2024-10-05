@@ -26,7 +26,7 @@ get cash(){
       console.log(`Insufficient funds!`);
       return 0;
     }
-    if(dayTotalWithdrawals + amount > dailyAllowance){
+    if(this.dayTotalWithdrawals + amount > this.dailyAllowance){
       console.log(`Insufficient remaining daily allowance!`);
       return 0;
     }
