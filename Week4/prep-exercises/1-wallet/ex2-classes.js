@@ -42,9 +42,9 @@ get cash(){
   }
 
   setDailyAllowance(newAllowance){
-    newAllowance = this.dailyAllowance;
+    this.dailyAllowance = newAllowance;
     console.log(
-      `Daily allowance set to: ${eurosFormatter.format(this.newAllowance)}`
+      `Daily allowance set to: ${eurosFormatter.format(newAllowance)}`
     );
 
   }
