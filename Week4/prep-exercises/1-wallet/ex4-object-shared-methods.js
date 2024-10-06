@@ -7,12 +7,32 @@ function deposit(amount) {
 function withdraw(amount) {
   if (this._cash - amount < 0) {
     console.log(`Insufficient funds!`);
-    return 0;
-  }
+    return 0;}
+    
+    if (this.dayTotalWithdrawals + amount > this.dailyAllowance) {
+      console.log(`Insufficient remaining daily allowance!`);
+      return 0;
+    }
+  
 
   this._cash -= amount;
+  this.dayTotalWithdrawals+= amount;
   return amount;
 }
+
+
+
+function setDailyAllowance(newAllowance) {
+  this.dailyAllowance = newAllowance;
+   console.log(
+      `Daily allowance set to: ${eurosFormatter.format(newAllowance)}`
+    );
+  }
+  
+  function resetDailyAllowance() {
+    this.dayTotalWithdrawals = 0;
+  }
+  
 
 function transferInto(wallet, amount) {
   console.log(
@@ -35,14 +55,19 @@ function getName() {
 }
 
 function createWallet(name, cash = 0) {
+
   return {
     _name: name,
     _cash: cash,
+     dailyAllowance: 40,
+     dayTotalWithdrawals: 0,
     deposit,
     withdraw,
     transferInto,
     reportBalance,
     getName,
+    setDailyAllowance,
+    resetDailyAllowance
   };
 }
 
